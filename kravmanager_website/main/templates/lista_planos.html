@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    function clicked(id, nome) {
+       if (confirm('Certeza que deseja DELETAR ' + nome +'?')) {
+        window.location.href = 'delete_plano/' + id;
+       } else {
+           return false;
+       }
+    }
+
+</script>
+
+{% extends 'base.html' %}
+
+{% block content %}
+	
+        <table class="table table-striped table-hover">
+        <center>
+        {% if planos %}
+            {% for plano in planos %}
+                <br>
+                <tr>
+                    <td>
+                    <strong>{{ plano }}</strong> <br>
+                    
+                    Valor: R$ {{ plano.valor }}<br>
+                    Taxa: {{ plano.taxa }}%<br>
+                    Custo de Operação: R$ {{ plano.custo_operacao }}<br>
+                    Inscritos: {{ plano.numInscritos }} <br>
+                    </td>
+                    <td align="center"> 
+                        <a href="{% url  'update-plano' plano.id %}" class="btn btn-secondary btn-sm"> ATUALIZAR </a>
+
+                        <a href="#" class="btn btn-danger btn-sm" onclick="clicked('{{ plano.id }}','{{ plano.nome }}')"> DELETAR </a>
+                    </td>
+                </tr>            
+            {% endfor %}
+        {% else %}
+            <strong>Nenhum aluno cadastrado!</strong>
+        {% endif %}
+    </center>
+        </table>
+    
+{% endblock %}
+

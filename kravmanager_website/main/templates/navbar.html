@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'add-aluno' %}">Cadastrar</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Buscar
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <li><a class="dropdown-item" href="{% url 'lista-alunos' %}">Todos</a></li>
+              <li><a class="dropdown-item" href="{% url 'busca-avancada' %}">Avançada</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Financeiro
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'lista-planos' %}">Ver Planos</a></li>
+              <li><a class="dropdown-item" href="{% url 'add-plano' %}">Adicionar Planos</a></li>
+              <li><a class="dropdown-item" href="{% url 'relatorio' %}">Relatorio</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" method=POST action="{% url 'lista-alunos' %}">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Nome do Aluno" aria-label="Search"
+          name="busca_nome">
+          <button class="btn btn-dark" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </div>
+  </nav>

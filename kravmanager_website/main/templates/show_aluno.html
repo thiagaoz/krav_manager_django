@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    function clicked(id, nome) {
+       if (confirm('Certeza que deseja DELETAR ' + nome +'?')) {
+        window.location.href = 'delete_aluno/' + id;
+       } else {
+           return false;
+       }
+    }
+</script>
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <h1>{% if aluno.titulo != 'aluno' %}
+            {{aluno.titulo}}.
+        {% endif %}
+        {{aluno }}
+    </h1>
+    <br>
+    {{ aluno.faixa }}<br>
+    {{ aluno.plano_assinado }}<br>
+    {{ aluno.instrutor }}
+    <br><br>
+    {% if aluno.titulo != 'aluno' %}
+        Alunos: <strong>{{ alunos.count }}</strong>
+    {% endif %}
+    <br><br>
+    </td>
+    <td align="center"> 
+        <a href="{% url  'update-aluno' aluno.id %}" class="btn btn-primary btn-sm"> ATUALIZAR </a>
+        <a href="{% url  'lista-alunos' %}" class="btn btn-secondary btn-sm"> VOLTAR </a>
+        <a href="#" class="btn btn-danger btn-sm" onclick="clicked('{{ aluno.id }}','{{ aluno.nome }}')"> DELETAR </a>
+    </td>
+</center>
+{% endblock %}

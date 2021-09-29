@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{% block content %}
+
+    <h1>Relatório</h1>
+    <br>
+    {%for plano in planos%}
+        {{ plano }} - Alunos: {{ plano.numInscritos }} | Rendimento: R$ {{ plano.calcRendimento }} <br>
+    {%endfor%}
+    <strong>Total R$ {{ total }}</strong>
+{%endblock%}

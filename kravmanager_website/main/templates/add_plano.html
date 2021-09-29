@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if submitted %}
+	Plano adicionado com sucesso!
+{% else %}
+<center>
+        <form action="" method=POST>
+			{% csrf_token %}
+			<br>
+			{{ form.as_p }}
+
+			<input type="submit" value="Adicionar" class="btn btn-primary btn-sm">
+			<a href="{% url  'home' %}" class="btn btn-secondary btn-sm"> Cancelar </a>
+
+		</form>
+</center>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<center>
+        <br><br>
+        <strong>Alunos cadastrados: {{ alunos.count }}</strong>
+        <table class="table table-striped table-hover">
+        {% if alunos %}
+            {% for aluno in alunos %}
+            <tr>
+                <td>
+                    <a href="{% url  'show-aluno' aluno.id %}">{{ aluno }}</a> | <strong>{{ aluno.faixa }}</strong>
+                    {% if aluno.titulo %}
+                        - {{ aluno.titulo }}
+                    {% endif %}
+                </td>
+                    <td align="center"> 
+                        <a href="{% url  'update-aluno' aluno.id %}" class="btn btn-secondary btn-sm"> ATUALIZAR </a>
+                </td>
+            </tr>
+            <br>
+            {% endfor %}
+        {% else %}
+            <strong>Nenhum aluno cadastrado!</strong>
+        {% endif %}
+        </table>
+
+    </center>
+{% endblock %}
