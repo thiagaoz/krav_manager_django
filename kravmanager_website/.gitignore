@@ -1,0 +1,2 @@
+# ignora .env, arquivo que protege aa secret key
+.env
