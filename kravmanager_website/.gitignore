@@ -1,2 +1,6 @@
 # ignora .env, arquivo que protege aa secret key
 .env
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
