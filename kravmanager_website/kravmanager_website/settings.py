@@ -67,8 +67,12 @@ WSGI_APPLICATION = 'kravmanager_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'KRAVMANAGER_DB',
+        'USER': 'postgres',
+        'PASSWORD': str(os.getenv('PSQL_PASSWORD')),
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
